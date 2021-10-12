@@ -30,28 +30,104 @@
     </header>
     <div class="container">
       <div class = "row">
-        <div class = "col-2 hour" >9 am</div>
-        <div class = "col-8 time-block" >fe</div>
-        <button class = "col-2 saveBtn" >fe</button>
+        <div class = "col-2 ">
+          <p class = "hour">9am</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
-      <div class = "row"></div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">10am</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">11am</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">12pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">1pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">2pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">3pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">4pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
+      <div class = "row">
+        <div class = "col-2 ">
+          <p class = "hour">5pm</p>
+        </div>
+        <div class = "col-8 time-block">
+          <p class = "description" type = "text">go to work</p>
+        </div>
+        <button class = "col-2 saveBtn"><i class="far fa-calendar-check"></i></button>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
-    var a = moment().format('MMMM Do YYYY, h:mm:ss a');
-    document.getElementById("currentDay").innerHTML = a
+    var displayDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+    document.getElementById("currentDay").innerHTML = displayDate
+
+    var currentTime = moment();
+    console.log(currentTime)
+    var beginningTime = moment('9:00am', 'h:mma')
+    console.log(beginningTime)
+    var endTime = moment('5:00pm', 'h:mma')
+    if (beginningTime.isBefore(endTime)){
+      $(".time-block").addClass("past");
+    }else if(beginningTime.isAfter(beginningTime)){
+      $(".time-block").addClass("future")
+    }
     </script>
   </body>
 </html>
