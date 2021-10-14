@@ -29,47 +29,47 @@
       <p id="currentDay" class="lead">time</p>
     </header>
     <div class="container">
-      <div class = "row time-block">
+      <div id = "time9" class = "row time-block" >
         <div class = "col-md-1 hour ">9am</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time10" class = "row time-block">
         <div class = "col-md-1 hour ">10am</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time11" class = "row time-block">
         <div class = "col-md-1 hour ">11am</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time12" class = "row time-block">
         <div class = "col-md-1 hour ">12pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time13" class = "row time-block">
         <div class = "col-md-1 hour ">1pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time14" class = "row time-block">
         <div class = "col-md-1 hour ">2pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time15" class = "row time-block">
         <div class = "col-md-1 hour ">3pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time16" class = "row time-block">
         <div class = "col-md-1 hour ">4pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
       </div>
-      <div class = "row time-block">
+      <div id = "time17" class = "row time-block">
         <div class = "col-md-1 hour ">5pm</div>
         <textarea class = "col-md-10 description"></textarea>
         <button class = "col-md-1 saveBtn"><i class="far fa-calendar-check"></i></button>
@@ -79,25 +79,31 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
-    var displayDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-    const timeBlock = Array.from(document.querySelectorAll('.time-block'));
-    const hours = Array.from(document.querySelectorAll(".hour"));
-    const row = document.querySelectorAll(".row");
-    $("#first-hour").innerText
-    console.log($("#first-hour").text())
-
-    document.getElementById("currentDay").innerHTML = displayDate
+    var displayDate = moment().format('MMMM Do YYYY');
+    $("#currentDay").html(displayDate);
     
-    var currentTime = moment('10:00am', 'h:mma');
-    var beginningTime = moment('9:00am', 'h:mma')
-    var endTime = moment('5:00pm', 'h:mma')
-    /*
-    if (currentTime.isAfter(beginningTime)){
-      $(".time-block").addClass("past");
-    }else if(currentTime.isbefore(endTime)){
-      $(".time-block").addClass("future")
-    }
-    */
+    var currentTime = moment().hour();
+    
+    $(".time-block").each(function(){
+      var eachTimeBlock = parseInt($(this).attr("id").split("time")[1]);
+      
+      if (eachTimeBlock > currentTime){
+        $(this).addClass("future");
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+      }
+      else if (eachTimeBlock == currentTime){
+        $(this).removeClass("future");
+        $(this).addClass("present");
+        $(this).removeClass("past");
+      } else{
+        $(this).removeClass("future");
+        $(this).removeClass("present");
+        $(this).addClass("past");
+      }
+
+      })
+    
     /*
     timeBlock.forEach(timeblocks =>{
       console.log(timeblocks)
