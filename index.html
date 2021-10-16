@@ -79,11 +79,20 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
+
+    
     var displayDate = moment().format('MMMM Do YYYY');
     $("#currentDay").html(displayDate);
+
+    $(".saveBtn").on("click", function (){
+      var userInput = $(this).siblings('.description').val();
+      var time = $(this).parent().attr('id');
+      console.log(time);
+      console.log(userInput);
+      localStorage.setItem(time,userInput);
+    })
     
     var currentTime = moment().hour();
-    
     $(".time-block").each(function(){
       var eachTimeBlock = parseInt($(this).attr("id").split("time")[1]);
       
@@ -103,12 +112,23 @@
       }
 
       })
-    
     /*
     timeBlock.forEach(timeblocks =>{
       console.log(timeblocks)
     })
     */
+
+  function getLocalStorage(){
+    for (i = 9; i >= 17; i++){
+      if (localStorage.getItem("time".concat(i)) === null) {
+        return;
+      } else{
+        $("#time .description").val(localStorage.getItem("time".concat(i)));
+      }
+    }
+  }
+  
+  getLocalStorage()
     </script>
   </body>
 </html>
