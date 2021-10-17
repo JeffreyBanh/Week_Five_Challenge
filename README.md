@@ -1,1 +1,1 @@
-# Work Day Scheduler Starter Code
+Developed a work day scheduler using jquery and moment
